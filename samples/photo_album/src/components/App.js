@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { CloudinaryContext, Image } from 'cloudinary-react';
+import { CloudinaryContext } from 'cloudinary-react';
 import { photosFetched } from '../actions';
 import PhotoListContainer from './PhotoList';
 import PhotosUploaderContainer from './PhotosUploader';
@@ -20,13 +20,6 @@ class App extends Component {
                 cloudName={this.props.cloudName}
                 uploadPreset={this.props.uploadPreset}
             >
-                {/*This will render the image fetched from a remote HTTP URL using Cloudinary*/}
-                <Image
-                    type="fetch"
-                    publicId="https://cloudinary.com/images/logo.png"
-                    fetch-format="auto"
-                    quality="auto"
-                />
                 <BrowserRouter>
                     <Switch className="router">
                         <Route
