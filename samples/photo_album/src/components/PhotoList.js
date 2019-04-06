@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { openUploadWidget } from '../utils/CloudinaryService';
 import { photosUploaded } from '../actions';
 import Photo from './Photo';
 
@@ -12,14 +11,6 @@ class PhotoList extends Component {
         return (
             <div className="photoList">
                 <h1>Your Photos</h1>
-                <div className="actions">
-                    <a
-                        className="upload_link"
-                        onClick={this.uploadImageWithCloudinary.bind(this)}
-                    >
-                        Add photos with Cloudinary File upload
-                    </a>
-                </div>
                 <div className="actions">
                     <NavLink className="upload_link" exact to="/photos/new">
                         Add photo with React File upload
@@ -38,30 +29,8 @@ class PhotoList extends Component {
                         );
                     })}
                 </div>
-                <div className="note">
-                    Take a look at our documentation of{' '}
-                    <a
-                        href="https://cloudinary.com/documentation/image_transformations"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Image Transformations
-                    </a>{' '}
-                    for a full list of supported transformations.
-                </div>
             </div>
         );
-    }
-
-    uploadImageWithCloudinary() {
-        const uploadOptions = { tags: 'myphotoalbum', ...this.context };
-        openUploadWidget(uploadOptions, (error, photos) => {
-            if (!error) {
-                this.props.onPhotosUploaded(photos);
-            } else {
-                console.log(error);
-            }
-        });
     }
 }
 

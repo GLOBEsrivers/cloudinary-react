@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Image, Transformation } from 'cloudinary-react';
+import { Image } from 'cloudinary-react';
 import { url } from '../utils/CloudinaryService';
-import PhotoThumbnails from './PhotoThumbnails';
 
 class Photo extends Component {
     constructor(props) {
@@ -28,42 +27,12 @@ class Photo extends Component {
                         crop="fit"
                         quality="80"
                     >
-                        <Transformation quality="auto" fetchFormat="auto" />
                     </Image>
                 </a>
-                {!this.state.showMore && (
-                    <div className="less_info">
-                        <button
-                            className="toggle_info"
-                            onClick={this.showMore.bind(this)}
-                        >
-                            Show transformations
-                        </button>
-                    </div>
-                )}
-
-                {this.state.showMore && (
-                    <div className="more_info">
-                        <button
-                            className="toggle_info"
-                            onClick={this.showLess.bind(this)}
-                        >
-                            Hide transformations
-                        </button>
-                        <PhotoThumbnails publicId={this.props.publicId} />
-                    </div>
-                )}
             </div>
         );
     }
 
-    showMore() {
-        this.setState({ showMore: true });
-    }
-
-    showLess() {
-        this.setState({ showMore: false });
-    }
 }
 
 Photo.propTypes = {

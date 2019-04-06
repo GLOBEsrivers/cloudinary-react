@@ -6,11 +6,6 @@ export const url = (publicId, options) => {
     return cl.url(publicId, scOptions);
 };
 
-export const openUploadWidget = (options, callback) => {
-    const scOptions = Util.withSnakeCaseKeys(options);
-    window.cloudinary.openUploadWidget(scOptions, callback);
-};
-
 export const fetchPhotos = cloudName => {
     // instead of maintaining the list of images, we rely on the 'myphotoalbum' tag
     // and simply retrieve a list of all images with that tag.
