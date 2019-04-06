@@ -1,4 +1,4 @@
 export default {
-    cloud_name: 'CCCCCCC',
-    upload_preset: 'UUUUUUUU'
+    cloud_name: 'globe-media-library',
+    upload_preset: 'pho3pkmb'
 };
